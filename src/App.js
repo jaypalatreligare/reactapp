@@ -1,6 +1,8 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
+import { BASE_URL } from "./config";
 import axios from 'axios';
+
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -9,7 +11,8 @@ const App = () => {
 
   useEffect(() => {
     // Fetch data from the Node.js API
-    axios.get('http://localhost:3000/users')
+   // console.log("apiBaseUrl-",BASE_URL);
+   axios.get(`${BASE_URL}/users`)
       .then(response => {
         setUsers(response.data); // Assuming the API returns an array of users
         setLoading(false);
